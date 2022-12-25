@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tester</title>
+    <script src="/script2.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<style>
+    tr.isDone{
+        background: lightgreen;
+    }
+    .restore{
+        display: none;
+    }
+    tr.isDone .restore {
+        display: inline-block;
+    }
+    tr.isDone .done{
+        display: none;
+    }
+</style>
+<body onload="printTask()">
+    <h1>My Task Board</h1><hr>
+    <span></span>
+    <input type="text" id="desc" placeholder="Enter Task"><br><br>
+    <span></span>
+    <input type="text" id="due" placeholder="Enter due date and time: Hour:--:--, Date:dd/mm/yy"><br>
+    <script>
+    flatpickr('#due',{
+        dateFormat: 'd-m-Y'
+    });
+    </script>
+    <button onclick="saveTask()" class="add">Add Task</button>
+    <br>
+    <table border="1px">
+        <legend>Tasks:</legend>
+        <thead>
+            <th>#</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Action</th>
+        </thead>
+        <tbody id="board"></tbody>
+    </table>
+</body>
+</html>
